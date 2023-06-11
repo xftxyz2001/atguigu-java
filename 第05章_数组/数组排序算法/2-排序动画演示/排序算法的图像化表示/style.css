@@ -1,0 +1,44 @@
+body {
+  background: #333;
+  overflow: hidden;
+}
+.ui > div {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.ui input[type=radio] {
+  display: none;
+}
+.ui .button-set {
+  font-size: 0px;
+  margin: 5px 5px;
+}
+.ui .button {
+  display: inline-block;
+  background: #ddd;
+  padding: 6px 4px;
+  border-right: 1px solid #bbb;
+  font-size: 10px;
+  font-family: monospace;
+}
+.ui .button:hover {
+  background: #ccc;
+}
+.ui label:first-child .button {
+  border-radius: 5px 0px 0px 5px;
+}
+.ui label:last-child .button {
+  border-radius: 0px 5px 5px 0px;
+  border-right-width: 0px;
+}
+.ui label:only-child .button {
+  border-radius: 5px;
+}
+.ui input:checked + .button {
+  background: #666;
+  color: #fff;
+}
+.ui input[type=range] {
+  position: relative;
+  top: 7px;
+}
