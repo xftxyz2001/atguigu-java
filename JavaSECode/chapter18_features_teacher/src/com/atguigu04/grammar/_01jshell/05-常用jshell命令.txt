@@ -1,0 +1,23 @@
+
+这是JDK9的新特性。
+
+1. 命令行中通过指令jshell，调取jshell工具
+
+2. 常用指令：
+/help: 获取有关使用 jshell 工具的信息
+
+/help intro : jshell 工具的简介
+
+/list : 列出当前 session 里所有有效的代码片段
+
+/vars : 查看当前 session 下所有创建过的变量
+
+/methods : 查看当前 session 下所有创建过的方法
+
+/imports : 列出导入的包
+
+/history : 键入的内容的历史记录
+
+/edit : 使用外部代码编辑器来编写 Java 代码
+
+/exit : 退出 jshell 工具

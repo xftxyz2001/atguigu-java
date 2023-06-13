@@ -1,0 +1,92 @@
+
+一、ArrayList
+1. ArrayList的特点：
+> 实现了List接口，存储有序的、可以重复的数据
+> 底层使用Object[]数组存储
+> 线程不安全的
+
+
+2. ArrayList源码解析：
+2.1 jdk7版本：(以jdk1.7.0_07为例)
+//如下代码的执行：底层会初始化数组，数组的长度为10。Object[] elementData = new Object[10];
+ArrayList<String> list = new ArrayList<>();
+
+list.add("AA"); //elementData[0] = "AA";
+list.add("BB");//elementData[1] = "BB";
+...
+当要添加第11个元素的时候，底层的elementData数组已满，则需要扩容。默认扩容为原来长度的1.5倍。并将原有数组
+中的元素复制到新的数组中。
+
+
+2.2 jdk8版本:(以jdk1.8.0_271为例)
+//如下代码的执行：底层会初始化数组，即：Object[] elementData = new Object[]{};
+ArrayList<String> list = new ArrayList<>();
+
+list.add("AA"); //首次添加元素时，会初始化数组elementData = new Object[10];elementData[0] = "AA";
+list.add("BB");//elementData[1] = "BB";
+...
+当要添加第11个元素的时候，底层的elementData数组已满，则需要扩容。默认扩容为原来长度的1.5倍。并将原有数组
+中的元素复制到新的数组中。
+
+小结：
+jdk1.7.0_07版本中：ArrayList类似于饿汉式
+jdk1.8.0_271版本中：ArrayList类似于懒汉式
+
+二、Vector
+1. Vector的特点：
+> 实现了List接口，存储有序的、可以重复的数据
+> 底层使用Object[]数组存储
+> 线程安全的
+
+
+
+2. Vector源码解析：(以jdk1.8.0_271为例)
+
+Vector v = new Vector(); //底层初始化数组，长度为10.Object[] elementData = new Object[10];
+v.add("AA"); //elementData[0] = "AA";
+v.add("BB");//elementData[1] = "BB";
+...
+当添加第11个元素时，需要扩容。默认扩容为原来的2倍。
+
+
+
+
+三、LinkedList
+1. LinkedList的特点：
+> 实现了List接口，存储有序的、可以重复的数据
+> 底层使用双向链表存储
+> 线程不安全的
+
+
+
+2. LinkedList在jdk8中的源码解析：
+
+LinkedList<String> list = new LinkedList<>(); //底层也没做啥
+list.add("AA"); //将"AA"封装到一个Node对象1中，list对象的属性first、last都指向此Node对象1。
+list.add("BB"); //将"BB"封装到一个Node对象2中，对象1和对象2构成一个双向链表，同时last指向此Node对象2
+
+...
+因为LinkedList使用的是双向链表，不需要考虑扩容问题。
+
+LinkedList内部声明：
+private static class Node<E> {
+    E item;
+    Node<E> next;
+    Node<E> prev;
+}
+
+
+3. LinkedList是否存在扩容问题？No!
+
+
+四、启示与开发建议
+1. Vector基本不使用了。
+2. ArrayList底层使用数组结构，查找和添加（尾部添加）操作效率高，时间复杂度为O(1)
+                           删除和插入操作效率低，时间复杂度为O(n)
+   LinkedList底层使用双向链表结构，删除和插入操作效率高，时间复杂度为O(1)
+                              查找和添加（尾部添加）操作效率高，时间复杂度为O(n) (有可能添加操作是O(1))
+
+3. 在选择了ArrayList的前提下，new ArrayList() : 底层创建长度为10的数组。
+                          new ArrayList(int capacity):底层创建指定capacity长度的数组。
+   如果开发中，大体确认数组的长度，则推荐使用ArrayList(int capacity)这个构造器，避免了底层的扩容、复制数组的操作。
+

@@ -1,0 +1,16 @@
+
+
+练习：
+遍历指定文件目录下的所有文件的名称，包括子文件目录中的文件。
+public void printFileName(File file)  //file可能是文件，也可能是文件目录
+
+
+拓展1：删除指定文件目录及其下的所有文件
+public void deleteDirectory(File file)  //file可能是文件，也可能是文件目录
+
+拓展2：计算指定文件目录占用空间的大小
+public long getDirectorySize(File file)  //file可能是文件，也可能是文件目录
+
+
+
+

@@ -1,0 +1,225 @@
+
+1. 数据结构概念：
+数据结构，就是一种程序设计优化的方法论，研究数据的`逻辑结构`和`物理结构`以及它们之间相互关系，
+并对这种结构定义相应的`运算`，目的是加快程序的执行速度、减少内存占用的空间。
+
+2. 数据结构的研究对象
+研究对象1：数据之间的逻辑关系
+> 集合结构
+> 线性结构：一对一关系
+> 树形结构：一对多关系
+> 图形结构：多对多关系
+
+
+研究对象2：数据的存储结构（或物理结构）
+> 顺序结构
+> 链式结构
+> 索引结构
+> 散列结构
+
+开发中，我们更习惯上如下的方式理解存储结构：
+>线性表(一对一关系): 一维数组、单向链表、双向链表、栈、队列
+>树(一对多关系):各种树。比如：二叉树、B+树
+>图(多对多关系)
+>哈希表：比如：HashMap、HashSet
+
+
+研究对象3：相关的算法操作
+- 分配资源，建立结构，释放资源
+- 插入和删除
+- 获取和遍历
+- 修改和排序
+
+
+3. 常见存储结构之：数组
+略
+
+4. 常见存储结构之：链表
+链表中的基本单位是：节点(Node)
+4.1 单向链表
+
+class Node{
+    Object data;
+    Node next;
+
+    public Node(Object data){
+        this.data = data;
+    }
+
+}
+
+创建对象：
+Node node1 = new Node("AA");
+Node node2 = new Node("BB");
+node1.next = node2;
+
+
+4.2 双向链表
+
+class Node{
+    Node prev;
+    Object data;
+    Node next;
+
+    public Node(Object data){
+        this.data = data;
+    }
+
+    public Node(Node prev,Object data,Node next){
+        this.prev = prev;
+        this.data = data;
+        this.next = next;
+    }
+
+}
+
+
+创建对象：
+Node node1 = new Node(null,"AA",null);
+Node node2 = new Node(node1,"BB",null);
+Node node3 = new Node(node2,"CC",null);
+
+node1.next = node2;
+node2.next = node3;
+
+
+5. 常见存储结构之：二叉树
+
+class TreeNode{
+    TreeNode left;
+    Object data;
+    TreeNode right;
+
+    public TreeNode(Object data){
+        this.data = data;
+    }
+
+    public TreeNode(TreeNode left,Object data,TreeNode right){
+        this.left = left;
+        this.data = data;
+        this.right = right;
+    }
+}
+
+创建对象：
+TreeNode node1 = new TreeNode(null,"AA",null);
+TreeNode leftNode = new TreeNode(null,"BB",null);
+TreeNode rightNode = new TreeNode(null,"CC",null);
+node1.left = leftNode;
+node1.right = rightNode;
+
+
+或
+class TreeNode{
+    TreeNode parent;
+    TreeNode left;
+    Object data;
+    TreeNode right;
+
+    public TreeNode(Object data){
+        this.data = data;
+    }
+
+    public TreeNode(TreeNode left,Object data,TreeNode right){
+        this.left = left;
+        this.data = data;
+        this.right = right;
+    }
+
+    public TreeNode(TreeNode parent,TreeNode left,Object data,TreeNode right){
+        this.parent = parent;
+        this.left = left;
+        this.data = data;
+        this.right = right;
+    }
+}
+
+创建对象：
+TreeNode node1 = new TreeNode(null,null,"AA",null);
+TreeNode leftNode = new TreeNode(node1,null,"BB",null);
+TreeNode rightNode = new TreeNode(node1,null,"CC",null);
+node1.left = leftNode;
+node1.right = rightNode;
+
+
+6. 常见存储结构之：栈(stack、先进后出、first in last out、FILO、LIFO）
+> 属于抽象数据类型（ADT）
+> 可以使用数组或链表来构建
+
+//数组实现栈
+class Stack{
+    Object[] values;
+    int size;//记录存储的元素的个数
+
+    public Stack(int length){
+        values = new Object[length];
+    }
+
+    //入栈
+    public void push(Object ele){
+        if(size >= values.length){
+            throw new RuntimeException("栈空间已满，入栈失败");
+        }
+
+        values[size] = ele;
+        size++;
+    }
+
+    //出栈
+    public Object pop(){
+        if(size <= 0){
+            throw new RuntimeException("栈空间已空，出栈失败");
+        }
+
+        Object obj = values[size - 1];
+        values[size - 1] = null;
+        size--;
+        return obj;
+
+    }
+
+}
+
+7. 常见存储结构之：队列(queue、先进先出、first in first out、FIFO)
+> 属于抽象数据类型（ADT）
+> 可以使用数组或链表来构建
+//数组实现队列
+class Queue{
+    Object[] values;
+    int size;//记录存储的元素的个数
+
+    public Queue(int length){
+        values = new Object[length];
+    }
+
+    public void add(Object ele){ //添加
+        if(size >= values.length){
+            throw new RuntimeException("队列已满，添加失败");
+        }
+
+        values[size] = ele;
+        size++;
+    }
+
+    public Object get(){  //获取
+        if(size <= 0){
+            throw new RuntimeException("队列已空，获取失败");
+        }
+
+        Object obj = values[0];
+
+        //数据前移
+        for(int i = 0;i < size - 1;i++){
+            values[i] = values[i + 1];
+        }
+
+        //最后一个元素置空
+        vlaues[size - 1] = null;
+
+        size--;
+
+        return obj;
+    }
+
+}
+

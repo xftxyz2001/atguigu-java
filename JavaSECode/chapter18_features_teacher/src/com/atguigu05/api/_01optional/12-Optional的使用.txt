@@ -1,0 +1,15 @@
+
+JDK8的新特性，JDK9-11中新增了一些方法。
+
+1. 为什么需要Optional类？
+为了避免代码中出现空指针异常。
+
+
+2. 如何实例化？
+static <T> Optional<T> ofNullable(T value)`：用来创建一个Optional实例，value可能是空，也可能非空
+
+
+3. 常用方法
+T orElse(T other) ：orElse(T other) 与ofNullable(T value)配合使用，如果Optional容器中非空，就返回所包装值，
+如果为空，就用orElse(T other)other指定的默认值（备胎）代替
+

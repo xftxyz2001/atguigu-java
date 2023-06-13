@@ -1,0 +1,10 @@
+
+（1）创建一个ArrayList集合对象，并指定泛型为<Integer>
+
+（2）添加5个[0,100)以内的随机整数到集合中
+
+（3）使用foreach遍历输出5个整数
+
+（4）使用集合的removeIf方法删除偶数，为Predicate接口指定泛型<Ineteger>
+
+（5）再使用Iterator迭代器输出剩下的元素，为Iterator接口指定泛型<Integer>

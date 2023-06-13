@@ -1,0 +1,9 @@
+
+JDK9的新特性：String底层存储结构从char[]变化为byte[]
+
+JDK11中新增了一些方法。
+
+JDK12新特性：String 实现了Constable接口、新增了一些方法
+
+
+

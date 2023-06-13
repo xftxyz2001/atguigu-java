@@ -1,0 +1,25 @@
+
+一、JDK8之前的API:
+1. System类的currentTimeMillis()
+
+
+2. 两个Date类
+
+
+3. SimpleDateFormat类
+
+
+
+
+4. Calendar类（日历类）：抽象类
+
+
+
+二、JDK8中的API:
+1. LocalDate,LocalTime,LocalDateTime
+
+
+2. Instant
+
+
+3. DateTimeFormatter

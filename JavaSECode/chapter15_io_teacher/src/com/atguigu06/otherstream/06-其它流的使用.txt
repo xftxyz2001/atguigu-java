@@ -1,0 +1,16 @@
+
+1. 标准输入、输出流
+System.in: 标准的输入流，默认从键盘输入
+System.out:标准的输出流，默认从显示器输出（理解为控制台输出）
+
+通过调用如下的方法，修改输入流和输出流的位置
+setIn(InputStream is)
+setOut(PrintStream ps)
+
+
+2. 打印流
+
+
+
+3. apache-common包的使用
+

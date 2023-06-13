@@ -1,0 +1,32 @@
+
+
+1. 常用方法：（Collection中定义了15个抽象方法。这些方法需要大家熟悉！）
+add(Object obj)
+addAll(Collection coll)
+clear()
+isEmpty()
+size()
+contains(Object obj)
+containsAll(Collection coll)
+retainAll(Collection coll)
+remove(Object obj)
+removeAll(Collection coll)
+hashCode()
+equals()
+toArray()
+*********
+iterator()
+
+
+
+2. 集合与数组的相互转换：
+集合 ---> 数组：toArray()
+数组 ---> 集合：调用Arrays的静态方法asList(Object ... objs)
+
+3. 向Collection中添加元素的要求：
+  要求元素所属的类一定要重写equals()!
+
+原因：
+因为Collection中的相关方法（比如：contains() / remove()）在使用时，要调用元素所在类的equals()。
+
+

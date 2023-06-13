@@ -1,0 +1,11 @@
+
+
+1. 类SuperA是类A的父类，则G<SuperA> 与 G<A>的关系：
+
+
+
+2. 类SuperA是类A的父类或接口，SuperA<G> 与 A<G>的关系：
+
+
+
+

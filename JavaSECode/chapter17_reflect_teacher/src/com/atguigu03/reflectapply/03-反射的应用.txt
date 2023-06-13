@@ -1,0 +1,49 @@
+
+1. （掌握）反射的应用1：创建运行时类的对象
+1.1 如何实现？
+通过Class的实例调用newInstance()方法即可。
+
+1.2 要想创建对象成功，需要满足：
+条件1：要求运行时类中必须提供一个空参的构造器
+条件2：要求提供的空参的构造器的权限要足够。
+
+
+1.3 回忆：JavaBean中要求给当前类提供一个公共的空参的构造器。有什么用？
+> 场景1：子类对象在实例化时，子类的构造器的首行默认调用父类空参的构造器。
+> 场景2：在反射中，经常用来创建运行时类的对象。那么我们要求各个运行时类都提供一个空参的构造器，便于我们编写通用的
+       创建运行时类对象的代码。
+
+1.4 在jdk9中标识为过时，替换成什么结构
+通过Constructor类调用newInstance(...)
+
+2. 反射应用2：获取运行时类的内部结构
+2.1 （了解）获取运行时类的内部结构1：所有属性、所有方法、所有构造器
+2.2 （熟悉）获取运行时类的内部结构2：父类、接口们、包、带泛型的父类、父类的泛型等
+
+
+3. （掌握）反射的应用3：调用指定的结构：指定的属性、方法、构造器
+3.1 调用指定的属性（步骤）
+步骤1.通过Class实例调用getDeclaredField(String fieldName)，获取运行时类指定名的属性
+步骤2. setAccessible(true)：确保此属性是可以访问的
+步骤3. 通过Filed类的实例调用get(Object obj) （获取的操作）
+                  或 set(Object obj,Object value) （设置的操作）进行操作。
+
+3.2 调用指定的方法（步骤）
+步骤1.通过Class的实例调用getDeclaredMethod(String methodName,Class ... args),获取指定的方法
+步骤2. setAccessible(true)：确保此方法是可访问的
+步骤3.通过Method实例调用invoke(Object obj,Object ... objs),即为对Method对应的方法的调用。
+     invoke()的返回值即为Method对应的方法的返回值
+     特别的：如果Method对应的方法的返回值类型为void，则invoke()返回值为null
+
+3.3 调用指定的构造器（步骤）
+步骤1.通过Class的实例调用getDeclaredConstructor(Class ... args)，获取指定参数类型的构造器
+步骤2.setAccessible(true)：确保此构造器是可以访问的
+步骤3.通过Constructor实例调用newInstance(Object ... objs),返回一个运行时类的实例。
+
+
+
+4. （了解）反射的应用4：通过反射获取注解的信息(见com.atguigu04.other.annotation包的测试)
+
+复习：自定义注解
+① 参照@SuppressWarnings 进行创建即可。
+② 注解要想通过反射的方式获取，必须声明元注解：@Retention(RetentionPolicy.RUNTIME)

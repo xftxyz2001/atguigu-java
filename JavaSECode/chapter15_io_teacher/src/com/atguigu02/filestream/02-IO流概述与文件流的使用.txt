@@ -1,0 +1,56 @@
+
+1. IO流的分类
+> 流向的不同：输入流、输出流
+> 处理单位的不同：字节流、字符流
+> 流的角色的不同：节点流、处理流
+
+2. 基础IO流的框架：
+抽象基类              4个节点流 (也称为文件流)
+InputStream         FileInputStream
+OutputStream        FileOutputStream
+Reader              FileReader
+Writer              FileWriter
+
+说明：本章虽然涉及到的流很多，但是使用流进行数据的读写操作是非常标准和规范的。
+
+3. FileReader \ FileWriter 的使用
+3.1 执行步骤：
+第1步：创建读取或写出的File类的对象
+第2步：创建输入流或输出流
+第3步：具体的读入或写出的过程。
+     读入：read(char[] cbuffer)
+     写出：write(String str) / write(char[] cbuffer,0,len)
+第4步：关闭流资源，避免内存泄漏
+
+
+3.2 注意点：
+① 因为涉及到流资源的关闭操作，所以出现异常的话，需要使用try-catch-finally的方式来处理异常
+② 对于输入流来讲，要求File类的对象对应的物理磁盘上的文件必须存在。否则，会报FileNotFoundException
+   对于输出流来讲，File类的对象对应的物理磁盘上的文件可以不存在。
+        > 如果此文件不存在，则在输出的过程中，会自动创建此文件，并写出数据到此文件中。
+        > 如果此文件存在，使用 FileWriter(File file) 或 FileWriter(File file,false):
+                                                输出数据过程中，会新建同名的文件对现有的文件进行覆盖。
+                       FileWriter(File file,true) : 输出数据过程中，会在现有的文件的末尾追加写出内容。
+
+
+4. FileInputStream \ FileOutputStream 的使用
+4.1 执行步骤：
+第1步：创建读取或写出的File类的对象
+第2步：创建输入流或输出流
+第3步：具体的读入或写出的过程。
+     读入：read(byte[] buffer)
+     写出：write(byte[] buffer,0,len)
+第4步：关闭流资源，避免内存泄漏
+
+
+4.2 注意点：
+> 在3.2 注意点的基础之上，看其他的注意点。
+> 对于字符流，只能用来操作文本文件，不能用来处理非文本文件的。
+  对于字节流，通常是用来处理非文本文件的。但是，如果涉及到文本文件的复制操作，也可以使用字节流。
+
+
+说明：
+文本文件：.txt 、.java 、.c、.cpp、.py等
+非文本文件：.doc、.xls 、.jpg 、.pdf、.mp3、.mp4、.avi 等
+
+

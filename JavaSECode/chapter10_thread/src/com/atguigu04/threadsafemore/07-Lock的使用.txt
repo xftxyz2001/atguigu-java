@@ -1,0 +1,12 @@
+
+
+除了使用synchronized同步机制处理线程安全问题之外，还可以使用jdk5.0提供的Lock锁的方式
+
+1. 步骤：
+
+
+2. 面试题：
+synchronized同步的方式 与Lock的对比 ？
+
+
+

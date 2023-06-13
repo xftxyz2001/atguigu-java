@@ -1,0 +1,20 @@
+
+JDK14中预览特性。
+JDK15中第二次预览。
+JDK16中转正特性。
+
+
+JDK14之前：
+// 先判断类型
+if (obj instanceof String) {
+    // 然后转换
+    String s = (String) obj;
+    // 然后才能使用
+}
+
+JDK14:（自动匹配模式）
+if (obj instanceof String s) {
+    // 如果类型匹配 直接使用
+} else {
+    // 如果类型不匹配则不能直接使用
+}

@@ -1,0 +1,32 @@
+
+一、HashMap
+1. HashMap中元素的特点
+
+
+
+2. HashMap源码解析
+2.1 jdk7中创建对象和添加数据过程(以JDK1.7.0_07为例说明)：
+
+
+
+
+
+2.2 jdk8与jdk7的不同之处(以jdk1.8.0_271为例)：
+
+
+
+2.3 属性/字段：
+
+
+
+二、LinkedHashMap
+1. LinkedHashMap 与 HashMap 的关系:
+
+
+
+2. 底层结构：
+
+
+三、HashSet和LinkedHashSet的源码分析
+
+

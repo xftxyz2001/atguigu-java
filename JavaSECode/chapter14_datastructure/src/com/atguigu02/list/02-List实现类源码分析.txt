@@ -1,0 +1,44 @@
+
+一、ArrayList
+1. ArrayList的特点：
+
+
+
+2. ArrayList源码解析：
+2.1 jdk7版本：(以jdk1.7.0_07为例)
+
+
+
+
+2.2 jdk8版本:(以jdk1.8.0_271为例)
+
+
+
+二、Vector
+1. Vector的特点：
+
+
+
+2. Vector源码解析：(以jdk1.8.0_271为例)
+
+
+
+
+
+
+三、LinkedList
+1. LinkedList的特点：
+
+
+
+2. LinkedList在jdk8中的源码解析：
+
+
+
+3. LinkedList是否存在扩容问题？
+
+
+四、启示与开发建议
+
+
+

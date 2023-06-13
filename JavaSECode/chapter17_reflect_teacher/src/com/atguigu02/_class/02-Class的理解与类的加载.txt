@@ -1,0 +1,100 @@
+
+1. Class类的理解（掌握）
+（如下以Java类的加载为例说明）
+针对于编写好的.java源文件进行编译(使用javac.exe)，会生成一个或多个.class字节码文件。接着，我们使用
+java.exe命令对指定的.class文件进行解释运行。这个解释运行的过程中，我们需要将.class字节码文件加载(使用类的加载器)
+到内存中(存放在方法区)。加载到内存中的.class文件对应的结构即为Class的一个实例。
+
+比如：加载到内存中的Person类或String类或User类，都作为Class的一个一个的实例
+
+Class clazz1 = Person.class;  //运行时类
+Class clazz2 = String.class;
+Class clazz3 = User.class;
+Class clazz4 = Comparable.class;
+
+说明：运行时类在内存中会缓存起来，在整个执行期间，只会加载一次。
+
+2. 体会：Class看做是反射的源头
+
+3. 获取Class实例的几种方式(掌握前三种)
+见代码
+
+
+4. Class的实例都可以指向哪些结构呢？（熟悉）
+简言之，所有Java类型！
+（1）class：外部类，成员(成员内部类，静态内部类)，局部内部类，匿名内部类
+（2）interface：接口
+（3）[]：数组
+（4）enum：枚举
+（5）annotation：注解@interface
+（6）primitive type：基本数据类型
+（7）void
+
+
+
+5. 类的加载过程(了解)
+过程1：类的装载(loading)
+将类的class文件读入内存，并为之创建一个java.lang.Class对象。此过程由类加载器完成
+
+过程2：链接(linking)
+> 验证(Verify):确保加载的类信息符合JVM规范，例如：以cafebabe开头，没有安全方面的问题。
+> 准备(Prepare):正式为类变量（static）分配内存并设置类变量默认初始值的阶段，这些内存都将在方法区中进行分配。
+> 解析(Resolve):虚拟机常量池内的符号引用（常量名）替换为直接引用（地址）的过程。
+
+过程3：初始化(initialization)
+执行类构造器<clinit>()方法的过程。
+类构造器<clinit>()方法是由编译期自动收集类中所有类变量的赋值动作和静态代码块中的语句合并产生的。
+
+
+
+5. 关于类的加载器(了解、JDK8版本为例)
+5.1 作用：负责类的加载，并对应于一个Class的实例。
+
+5.2 分类（分为两种）：
+> BootstrapClassLoader:引导类加载器、启动类加载器
+     > 使用C/C++语言编写的，不能通过Java代码获取其实例
+     > 负责加载Java的核心库（JAVA_HOME/jre/lib/rt.jar或sun.boot.class.path路径下的内容）
+
+> 继承于ClassLoader的类加载器
+    > ExtensionClassLoader:扩展类加载器
+            > 负责加载从java.ext.dirs系统属性所指定的目录中加载类库，或从JDK的安装目录的jre/lib/ext子目录下加载类库
+    > SystemClassLoader/ApplicationClassLoader:系统类加载器、应用程序类加载器
+            > 我们自定义的类，默认使用的类的加载器。
+    > 用户自定义类的加载器
+            > 实现应用的隔离（同一个类在一个应用程序中可以加载多份）；数据的加密。
+
+5.3 以上的类的加载器是否存在继承关系？ No!
+
+class ClassLoader{
+    ClassLoader parent;
+
+    public ClassLoader(ClassLoader parent){
+        this.parent = parent;
+    }
+}
+
+
+//测试代码：
+ClassLoader loader0 = new ClassLoader();
+ClassLoader loader1 = new ClassLoader(loader0);
+我们就把loader0叫做loader1的父类加载器。
+
+6. （掌握）使用类的加载器获取流，并读取配置文件信息
+/*
+* 需求：通过ClassLoader加载指定的配置文件
+* */
+@Test
+public void test3() throws IOException {
+    Properties pros = new Properties();
+
+    //通过类的加载器读取的文件的默认的路径为：当前module下的src下
+    InputStream is = ClassLoader.getSystemClassLoader().getResourceAsStream("info1.properties");
+
+    pros.load(is);
+
+    String name = pros.getProperty("name");
+    String pwd = pros.getProperty("password");
+    System.out.println(name + ":" +pwd);
+}
+
+

@@ -1,0 +1,29 @@
+
+1. IO流的分类
+
+
+2. 基础IO流的框架：
+
+
+
+3. FileReader \ FileWriter 的使用
+3.1 执行步骤：
+
+
+
+
+3.2 注意点：
+
+
+
+
+4. FileInputStream \ FileOutputStream 的使用
+4.1 执行步骤：
+
+
+
+4.2 注意点：
+
+
+
+

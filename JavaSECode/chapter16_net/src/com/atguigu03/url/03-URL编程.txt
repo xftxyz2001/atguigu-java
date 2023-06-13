@@ -1,0 +1,13 @@
+
+
+URL(Uniform Resource Locator):
+1. 作用：
+
+
+2. URL的格式：
+
+
+3. URL类的实例化及常用方法
+
+
+4. 下载指定的URL的资源到本地（了解）

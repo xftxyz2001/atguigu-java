@@ -1,0 +1,6 @@
+
+练习：
+判断指定目录下是否有后缀名为.jpg的文件，如果有，就输出该文件名称
+
+提示：File类提供了文件过滤器方法(拓展)
+public String[] list(FilenameFilter filter)
