@@ -1,0 +1,5 @@
+
+
+案例：
+修改方法重写的练习2中定义的类Kids中employeed()方法，在该方法中调用父类ManKind的employeed()方法，
+然后再输出"but Kids should study and no job."

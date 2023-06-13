@@ -1,0 +1,88 @@
+
+
+一、测试4种权限修饰
+在com.atguigu04.override包下创建两个package：test1和test2，测试Java中提供的4种权限修饰
+
+实际开发中，各权限修饰的使用频率是怎样的？ public、private是使用频率最高的！
+
+二、方法的重写(overwrite / override)
+
+1. 为什么需要方法的重写？
+
+子类在继承父类以后，就获取了父类中声明的所有的方法。但是，父类中的方法可能不太适用于子类，换句话说，子类
+需要对父类中继承过来的方法进行覆盖、覆写的操作。
+
+
+举例（银行账户）：
+
+class Account{//账户
+    double balance;//余额
+
+    //取钱
+    public void withdraw(double amt){
+        //判断balance余额是否够amt取钱的额度
+    }
+}
+
+class CheckAccount extends Account{ //信用卡
+    double protectedBy;//透支额度
+
+
+    public void withdraw(double amt){
+        //判断balance余额是否够amt取钱的额度
+        //如果不够，还可以考虑从protectedBy额度里取
+    }
+}
+
+class AccountTest{
+    public static void main(String[] args){
+        CheckAccount acct = new CheckAccount();
+        acct.withdraw(); //执行的是子类重写父类的方法
+    }
+}
+
+2. 何为方法的重写？
+
+子类对父类继承过来的方法进行的覆盖、覆写的操作，就称为方法的重写。
+
+
+3. 方法重写应遵循的规则
+
+[复习]方法声明的格式：权限修饰符 返回值类型 方法名(形参列表) [throws 异常类型] { //方法体 }
+
+具体规则：
+① 父类被重写的方法与子类重写的方法的方法名和形参列表必须相同。
+② 子类重写的方法的权限修饰符不小于父类被重写的方法的权限修饰符
+   > 子类不能重写父类中声明为private权限修饰的方法。
+③ 关于返回值类型：
+    > 父类被重写的方法的返回值类型是void，则子类重写的方法的返回值类型必须是void
+    > 父类被重写的方法的返回值类型是基本数据类型，则子类重写的方法的返回值类型必须与被重写的方法的返回值类型相同。
+    > 父类被重写的方法的返回值类型是引用数据类型(比如类)，则子类重写的方法的返回值类型可以与被重写的方法的返回值
+      类型相同 或 是被重写的方法的返回值类型的子类
+④ （超纲）子类重写的方法抛出的异常类型可以与父类被重写的方法抛出的异常类型相同，或是父类被重写的方法抛出的异常类型的子类。
+
+补充说明：方法体：没有要求。但是子类重写的方法的方法体必然与父类被重写的方法的不同。
+
+
+
+4. 面试题：区分方法的重载(overload)与重写(override / overwrite)
+
+重载：“两同一不同”
+重写：继承以后，子类覆盖父类中同名同参数的方法
+
+
+[类比]相同类型的面试题：
+
+throws / throw
+final / finally / finalize
+Collection / Collections
+String / StringBuffer / StringBuilder
+ArrayList / LinkedList
+HashMap / LinkedHashMap / Hashtable
+...
+
+
+sleep() / wait()
+== / equals()
+同步 / 异步
+

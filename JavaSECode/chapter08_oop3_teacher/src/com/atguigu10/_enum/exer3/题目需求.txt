@@ -1,0 +1,24 @@
+
+案例拓展：颜色枚举类(使用enum声明)
+（1）声明颜色枚举类Color：
+
+- 声明final修饰的int类型的属性red,green,blue
+- 声明final修饰的String类型的属性description
+- 声明有参构造器Color(int red, int green, int blue,String description)
+- 创建7个常量对象：红、橙、黄、绿、青、蓝、紫，
+- 重写toString方法，例如：RED(255,0,0)->红色
+
+（2）在测试类中，使用枚举类，获取绿色对象，并打印对象。
+
+提示：
+- 7个常量对象的RGB值如下：
+红：(255,0,0)
+橙：(255,128,0)
+黄：(255,255,0)
+绿：(0,255,0)
+青：(0,255,255)
+蓝：(0,0,255)
+紫：(128,0,255)
+
+7个常量对象名如下：
+RED, ORANGE, YELLOW, GREEN, CYAN, BLUE,PURPLE

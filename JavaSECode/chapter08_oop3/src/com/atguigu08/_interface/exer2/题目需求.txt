@@ -1,0 +1,18 @@
+
+定义一个接口用来实现两个对象的比较。
+
+interface CompareObject{
+	//若返回值是 0 , 代表相等; 若为正数，代表当前对象大；负数代表当前对象小
+	public int compareTo(Object o);
+}
+
+
+定义一个Circle类，声明radius属性，提供getter和setter方法
+
+定义一个ComparableCircle类，继承Circle类并且实现CompareObject接口。
+在ComparableCircle类中给出接口中方法compareTo的实现体，用来比较两个圆的半径大小。
+
+定义一个测试类InterfaceTest，创建两个ComparableCircle对象，调用compareTo方法比较两个类的半径大小。
+
+拓展：参照上述做法定义矩形类Rectangle和ComparableRectangle类，在ComparableRectangle类
+中给出compareTo方法的实现，比较两个矩形的面积大小。

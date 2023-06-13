@@ -1,0 +1,23 @@
+
+题目1：排错
+public class Something {
+    public int addOne(final int x) {
+        return ++x;
+        // return x + 1;
+    }
+}
+
+题目2：排错
+public class Something {
+    public static void main(String[] args) {
+        Other o = new Other();
+        new Something().addOne(o);
+    }
+    public void addOne(final Other o) {
+        // o = new Other();
+        o.i++;
+    }
+}
+class Other {
+    public int i;
+}

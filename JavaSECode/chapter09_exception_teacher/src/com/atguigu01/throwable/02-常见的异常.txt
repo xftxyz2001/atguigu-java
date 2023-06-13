@@ -1,0 +1,21 @@
+
+【面试题】说说你在开发中常见的异常都有哪些？
+
+开发1-2年：
+|----编译时异常：(受检异常)在执行javac.exe命令时，出现的异常。
+    |----- ClassNotFoundException
+    |----- FileNotFoundException
+    |----- IOException
+|----运行时异常：(非受检异常)在执行java.exe命令时，出现的异常。
+    |---- ArrayIndexOutOfBoundsException
+    |---- NullPointerException
+    |---- ClassCastException
+    |---- NumberFormatException
+    |---- InputMismatchException
+    |---- ArithmeticException
+
+开发3年以上：
+OOM。
+
+
+

@@ -1,0 +1,3 @@
+
+使用 com.atguigu07.encapsulation.exer4.test1 和 com.atguigu07.encapsulation.exer4.test2两个包
+来测试几种常见的权限修饰符。

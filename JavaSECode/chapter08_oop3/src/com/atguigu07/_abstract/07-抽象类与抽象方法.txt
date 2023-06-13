@@ -1,0 +1,33 @@
+
+抽象类与抽象方法
+
+
+1. 案例引入
+举例1：GeometricObject-Circle-Rectangle
+
+
+举例2：Account-SavingAccount-CheckAcount
+
+
+2. abstract的概念：
+
+3. abstract可以用来修饰：
+
+4. 具体的使用：
+
+
+
+5. abstract不能使用的场景：
+5.1 abstract 不能修饰哪些结构？
+
+
+5.2 abstract 不能与哪些关键字共用？
+
+
+
+
+
+
+
+
+

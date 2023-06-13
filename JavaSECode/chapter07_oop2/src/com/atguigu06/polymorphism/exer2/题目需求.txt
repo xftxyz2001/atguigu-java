@@ -1,0 +1,5 @@
+
+案例：
+
+修改com.atguigu06.polymorphism.apply包下的AnimalTest类的方法，在判断Animal是Dog或Cat时，
+向下转型，并调用各自特有的方法。

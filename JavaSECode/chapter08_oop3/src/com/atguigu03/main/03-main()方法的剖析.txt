@@ -1,0 +1,13 @@
+
+main()方法的剖析
+public static void main(String args[]){}
+
+1. 理解1：
+   理解2：
+
+2. 与控制台交互
+
+
+
+
+
